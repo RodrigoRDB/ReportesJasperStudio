@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reportes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .report-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+        }
+
+        .report-card h3 {
+            color: #1e3c72;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2a5298;
+        }
+
+        .report-card p {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .btn-view {
+            background: #2a5298;
+            color: white;
+        }
+
+        .btn-view:hover {
+            background: #1e3c72;
+            transform: scale(1.05);
+        }
+
+        .btn-download {
+            background: #34495e;
+            color: white;
+        }
+
+        .btn-download:hover {
+            background: #2c3e50;
+            transform: scale(1.05);
+        }
+
+        .icon {
+            margin-right: 5px;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding: 20px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .reports-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📊 Sistema de Reportes</h1>
+        <p>Visualiza y descarga tus reportes de manera fácil y rápida</p>
+    </header>
+
+    <div class="reports-grid">
+        <!-- Reporte 1 -->
+        <div class="report-card">
+            <h3>Reporte de Clientes</h3>
+            <p>Listado completo de clientes registrados con sus datos principales y estado de cuenta.</p>
+            <div class="button-group">
+                <a href="/reporte/view" class="btn btn-view">
+                    <span class="icon">👁️</span>Visualizar
+                </a>
+                <a href="/reporte/download" class="btn btn-download">
+                    <span class="icon">📥</span>Descargar
+                </a>
+            </div>
+        </div>
+
+        <!-- Reporte 2 -->
+        <div class="report-card">
+            <h3>Reporte de Transacciones</h3>
+            <p>Detalle de todas las transacciones bancarias realizadas en el período seleccionado.</p>
+            <div class="button-group">
+                <a href="/reporte/transacciones/view" class="btn btn-view">
+                    <span class="icon">👁️</span>Visualizar
+                </a>
+                <a href="/reporte/transacciones/download" class="btn btn-download">
+                    <span class="icon">📥</span>Descargar
+                </a>
+            </div>
+        </div>
+
+        <!-- Reporte 3 -->
+        <div class="report-card">
+            <h3>Reporte de Cuentas</h3>
+            <p>Estado de cuentas bancarias con saldos actuales y movimientos recientes.</p>
+            <div class="button-group">
+                <a href="/reporte/cuentas/view" class="btn btn-view">
+                    <span class="icon">👁️</span>Visualizar
+                </a>
+                <a href="/reporte/cuentas/download" class="btn btn-download">
+                    <span class="icon">📥</span>Descargar
+                </a>
+            </div>
+        </div>
+
+        <!-- Reporte 4 -->
+        <div class="report-card">
+            <h3>Reporte de Préstamos</h3>
+            <p>Información detallada de préstamos activos, montos, plazos y estado de pagos.</p>
+            <div class="button-group">
+                <a href="/reporte/prestamos/view" class="btn btn-view">
+                    <span class="icon">👁️</span>Visualizar
+                </a>
+                <a href="/reporte/prestamos/download" class="btn btn-download">
+                    <span class="icon">📥</span>Descargar
+                </a>
+            </div>
+        </div>
+
+        <!-- Reporte 5 -->
+        <div class="report-card">
+            <h3>Reporte Financiero General</h3>
+            <p>Resumen ejecutivo con indicadores financieros, gráficos y estadísticas generales.</p>
+            <div class="button-group">
+                <a href="/reporte/financiero/view" class="btn btn-view">
+                    <span class="icon">👁️</span>Visualizar
+                </a>
+                <a href="/reporte/financiero/download" class="btn btn-download">
+                    <span class="icon">📥</span>Descargar
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Sistema de Gestión de Reportes - 2025</p>
+    </footer>
+</div>
+</body>
+</html>

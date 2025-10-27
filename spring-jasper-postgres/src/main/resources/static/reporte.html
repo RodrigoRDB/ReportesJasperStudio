@@ -3,232 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Reportes</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            color: white;
-            margin-bottom: 40px;
-            padding: 30px 20px;
-        }
-
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        header p {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-
-        .reports-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            padding: 20px;
-        }
-
-        .report-card {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .report-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.3);
-        }
-
-        .report-card h3 {
-            color: #1e3c72;
-            font-size: 1.4em;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #2a5298;
-        }
-
-        .report-card p {
-            color: #555;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            flex: 1;
-            min-width: 120px;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.95em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            text-align: center;
-            display: inline-block;
-        }
-
-        .btn-view {
-            background: #2a5298;
-            color: white;
-        }
-
-        .btn-view:hover {
-            background: #1e3c72;
-            transform: scale(1.05);
-        }
-
-        .btn-download {
-            background: #34495e;
-            color: white;
-        }
-
-        .btn-download:hover {
-            background: #2c3e50;
-            transform: scale(1.05);
-        }
-
-        .icon {
-            margin-right: 5px;
-        }
-
-        footer {
-            text-align: center;
-            color: white;
-            margin-top: 50px;
-            padding: 20px;
-            opacity: 0.8;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-
-            .reports-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .button-group {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-        }
-    </style>
+    <title>Sistema de Reportes Bancarios</title>
+    <link rel="stylesheet" href="reporte.css">
 </head>
 <body>
 <div class="container">
-    <header>
-        <h1>📊 Sistema de Reportes</h1>
-        <p>Visualiza y descarga tus reportes de manera fácil y rápida</p>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="4" fill="#1A3A5C"/>
+                        <path d="M10 15L20 10L30 15V28C30 28.5304 29.7893 29.0391 29.4142 29.4142C29.0391 29.7893 28.5304 30 28 30H12C11.4696 30 10.9609 29.7893 10.5858 29.4142C10.2107 29.0391 10 28.5304 10 28V15Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 30V20H24V30" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>Sistema Bancario</h1>
+                    <span class="subtitle">Gestión de Reportes</span>
+                </div>
+            </div>
+            <div class="header-info">
+                <span class="date-time" id="currentDateTime"></span>
+            </div>
+        </div>
     </header>
 
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <span class="separator">/</span>
+        <span class="current">Reportes</span>
+    </nav>
+
+    <!-- Page Title -->
+    <div class="page-title">
+        <h2>Reportes del Sistema</h2>
+        <p>Seleccione el reporte que desea visualizar o descargar</p>
+    </div>
+
+    <!-- Reports Grid -->
     <div class="reports-grid">
-        <!-- Reporte 1 -->
+        <!-- Reporte 1: Clientes y Cuentas Bancarias -->
         <div class="report-card">
-            <h3>Reporte de Clientes</h3>
-            <p>Listado completo de clientes registrados con sus datos principales y estado de cuenta.</p>
+            <div class="report-header">
+                <div class="report-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <div class="report-badge">R-001</div>
+            </div>
+            <h3 class="report-title">Clientes y Cuentas Bancarias</h3>
+            <p class="report-description">
+                Información detallada de clientes registrados con datos personales,
+                tipo de cuenta, número de cuenta y saldo actual.
+            </p>
+            <div class="report-meta">
+                    <span class="meta-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11l3 3L22 4"></path>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                        </svg>
+                        Activo
+                    </span>
+                <span class="meta-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        Actualizado
+                    </span>
+            </div>
             <div class="button-group">
-                <a href="/reporte/view" class="btn btn-view">
-                    <span class="icon">👁️</span>Visualizar
+                <a href="/reporte/view" class="btn btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    Visualizar
                 </a>
-                <a href="/reporte/download" class="btn btn-download">
-                    <span class="icon">📥</span>Descargar
+                <a href="/reporte/download" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Descargar PDF
                 </a>
             </div>
         </div>
 
-        <!-- Reporte 2 -->
+        <!-- Reporte 2: Cuentas y Tarjetas -->
         <div class="report-card">
-            <h3>Reporte de Transacciones</h3>
-            <p>Detalle de todas las transacciones bancarias realizadas en el período seleccionado.</p>
+            <div class="report-header">
+                <div class="report-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                </div>
+                <div class="report-badge">R-002</div>
+            </div>
+            <h3 class="report-title">Cuentas y Tarjetas Asociadas</h3>
+            <p class="report-description">
+                Detalle de cuentas bancarias con información de tarjetas vinculadas,
+                incluyendo tipo, número, CVC y fecha de vencimiento.
+            </p>
+            <div class="report-meta">
+                    <span class="meta-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11l3 3L22 4"></path>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                        </svg>
+                        Activo
+                    </span>
+                <span class="meta-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        Actualizado
+                    </span>
+            </div>
             <div class="button-group">
-                <a href="/reporte/transacciones/view" class="btn btn-view">
-                    <span class="icon">👁️</span>Visualizar
+                <a href="/reporte/vista?nombre=Reporte2" class="btn btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    Visualizar
                 </a>
-                <a href="/reporte/transacciones/download" class="btn btn-download">
-                    <span class="icon">📥</span>Descargar
+                <a href="/reporte/descargar?nombre=Reporte2" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Descargar PDF
                 </a>
             </div>
         </div>
 
-        <!-- Reporte 3 -->
+        <!-- Reporte 3: Solicitudes -->
         <div class="report-card">
-            <h3>Reporte de Cuentas</h3>
-            <p>Estado de cuentas bancarias con saldos actuales y movimientos recientes.</p>
+            <div class="report-header">
+                <div class="report-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+                <div class="report-badge">R-003</div>
+            </div>
+            <h3 class="report-title">Clientes con Solicitudes</h3>
+            <p class="report-description">
+                Registro de solicitudes realizadas por clientes (préstamos, tarjetas, cuentas),
+                con estado actual y descripción detallada.
+            </p>
+            <div class="report-meta">
+                    <span class="meta-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11l3 3L22 4"></path>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                        </svg>
+                        Activo
+                    </span>
+                <span class="meta-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        Actualizado
+                    </span>
+            </div>
             <div class="button-group">
-                <a href="/reporte/cuentas/view" class="btn btn-view">
-                    <span class="icon">👁️</span>Visualizar
+                <a href="/reporte/vista?nombre=Reporte3" class="btn btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    Visualizar
                 </a>
-                <a href="/reporte/cuentas/download" class="btn btn-download">
-                    <span class="icon">📥</span>Descargar
+                <a href="/reporte/descargar?nombre=Reporte3" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Descargar PDF
                 </a>
             </div>
         </div>
 
-        <!-- Reporte 4 -->
+        <!-- Reporte 4: Empeños -->
         <div class="report-card">
-            <h3>Reporte de Préstamos</h3>
-            <p>Información detallada de préstamos activos, montos, plazos y estado de pagos.</p>
+            <div class="report-header">
+                <div class="report-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="8" r="7"></circle>
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                    </svg>
+                </div>
+                <div class="report-badge">R-004</div>
+            </div>
+            <h3 class="report-title">Reporte de Empeños</h3>
+            <p class="report-description">
+                Control de productos empeñados con valores de préstamo,
+                recuperación, fechas de vencimiento y estado actual.
+            </p>
+            <div class="report-meta">
+                    <span class="meta-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11l3 3L22 4"></path>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                        </svg>
+                        Activo
+                    </span>
+                <span class="meta-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        Actualizado
+                    </span>
+            </div>
             <div class="button-group">
-                <a href="/reporte/prestamos/view" class="btn btn-view">
-                    <span class="icon">👁️</span>Visualizar
+                <a href="/reporte/vista?nombre=Reporte4" class="btn btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    Visualizar
                 </a>
-                <a href="/reporte/prestamos/download" class="btn btn-download">
-                    <span class="icon">📥</span>Descargar
+                <a href="/reporte/descargar?nombre=Reporte4" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Descargar PDF
                 </a>
             </div>
         </div>
 
-        <!-- Reporte 5 -->
+        <!-- Reporte 5: Transferencias -->
         <div class="report-card">
-            <h3>Reporte Financiero General</h3>
-            <p>Resumen ejecutivo con indicadores financieros, gráficos y estadísticas generales.</p>
+            <div class="report-header">
+                <div class="report-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <polyline points="19 12 12 19 5 12"></polyline>
+                    </svg>
+                </div>
+                <div class="report-badge">R-005</div>
+            </div>
+            <h3 class="report-title">Transferencias Bancarias</h3>
+            <p class="report-description">
+                Registro de transferencias realizadas entre cuentas, incluyendo
+                emisor, receptor, montos y tipo de transferencia. Confidencial.
+            </p>
+            <div class="report-meta">
+                    <span class="meta-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11l3 3L22 4"></path>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                        </svg>
+                        Activo
+                    </span>
+                <span class="meta-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        Actualizado
+                    </span>
+            </div>
             <div class="button-group">
-                <a href="/reporte/financiero/view" class="btn btn-view">
-                    <span class="icon">👁️</span>Visualizar
+                <a href="/reporte/vista?nombre=Reporte5" class="btn btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    Visualizar
                 </a>
-                <a href="/reporte/financiero/download" class="btn btn-download">
-                    <span class="icon">📥</span>Descargar
+                <a href="/reporte/descargar?nombre=Reporte5" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Descargar PDF
                 </a>
             </div>
         </div>
     </div>
 
-    <footer>
-        <p>Sistema de Gestión de Reportes - 2025</p>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Sistema Bancario. Todos los derechos reservados.</p>
+            <p class="footer-note">Información confidencial - Solo para uso autorizado</p>
+        </div>
     </footer>
 </div>
+
+<script>
+    // Actualizar fecha y hora
+    function updateDateTime() {
+        const now = new Date();
+        const options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        };
+        document.getElementById('currentDateTime').textContent =
+            now.toLocaleDateString('es-ES', options);
+    }
+
+    updateDateTime();
+    setInterval(updateDateTime, 60000); // Actualizar cada minuto
+</script>
 </body>
 </html>

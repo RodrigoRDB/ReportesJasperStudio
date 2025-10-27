@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class ReportController {
@@ -45,6 +46,35 @@ public class ReportController {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
         headers.set(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=clientes_report.pdf");
+        return ResponseEntity.ok().headers(headers).body(pdf);
+    }
+    //GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    @GetMapping("/reporte/vista")
+    public ResponseEntity<String> viewReport(
+            @RequestParam String nombre) throws Exception {
+
+        Map<String, Object> params = new HashMap<>();
+        // Si tu reporte tiene parámetros (como clienteId, fecha, etc.), los agregas aquí
+        // params.put("P_CLIENTE_ID", 1);
+
+        String html = jasperService.generateHtml(nombre + ".jrxml", params);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.TEXT_HTML);
+        return ResponseEntity.ok().headers(headers).body(html);
+    }
+
+    @GetMapping("/reporte/descargar")
+    public ResponseEntity<byte[]> downloadReport(
+            @RequestParam String nombre) throws Exception {
+
+        Map<String, Object> params = new HashMap<>();
+        // Igual que arriba, aquí podrías pasar parámetros dinámicos
+
+        byte[] pdf = jasperService.generatePdf(nombre + ".jrxml", params);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.set(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=" + nombre + ".pdf");
         return ResponseEntity.ok().headers(headers).body(pdf);
     }
 }

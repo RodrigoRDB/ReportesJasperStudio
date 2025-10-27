@@ -1,0 +1,530 @@
+/* ============================================
+   SISTEMA DE REPORTES BANCARIOS - ESTILOS
+   Diseño corporativo profesional
+============================================ */
+
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colores corporativos */
+    --primary-color: #1A3A5C;
+    --secondary-color: #2C5F8D;
+    --accent-color: #3A7CA5;
+    --dark-color: #0D1B2A;
+    --light-gray: #F5F7FA;
+    --medium-gray: #E1E8ED;
+    --text-primary: #2C3E50;
+    --text-secondary: #7F8C8D;
+    --border-color: #D1D9E0;
+    --success-color: #27AE60;
+    --white: #FFFFFF;
+
+    /* Sombras */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.12);
+
+    /* Transiciones */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ============================================
+   HEADER
+============================================ */
+.main-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: 24px 0;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.logo-text .subtitle {
+    display: block;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+.header-info {
+    display: flex;
+    align-items: center;
+}
+
+.date-time {
+    color: var(--white);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    backdrop-filter: blur(10px);
+}
+
+/* ============================================
+   BREADCRUMB
+============================================ */
+.breadcrumb {
+    padding: 16px 0;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-top: 20px;
+}
+
+.breadcrumb a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.breadcrumb .separator {
+    margin: 0 8px;
+    color: var(--border-color);
+}
+
+.breadcrumb .current {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* ============================================
+   PAGE TITLE
+============================================ */
+.page-title {
+    margin: 32px 0;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.page-title h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.page-title p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* ============================================
+   REPORTS GRID
+============================================ */
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+/* ============================================
+   REPORT CARD
+============================================ */
+.report-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.report-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--secondary-color);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.report-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--secondary-color);
+}
+
+.report-card:hover::before {
+    opacity: 1;
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.report-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+}
+
+.report-badge {
+    background: var(--light-gray);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+.report-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.report-description {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    min-height: 72px;
+}
+
+/* ============================================
+   REPORT META
+============================================ */
+.report-meta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--medium-gray);
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.meta-item svg {
+    color: var(--success-color);
+}
+
+/* ============================================
+   BUTTON GROUP
+============================================ */
+.button-group {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-primary {
+    background: var(--secondary-color);
+    color: var(--white);
+    box-shadow: 0 2px 4px rgba(42, 95, 141, 0.2);
+}
+
+.btn-primary:hover {
+    background: var(--primary-color);
+    box-shadow: 0 4px 8px rgba(42, 95, 141, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: var(--white);
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--secondary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   FOOTER
+============================================ */
+.main-footer {
+    background: var(--white);
+    border-top: 1px solid var(--border-color);
+    padding: 32px 0;
+    margin-top: 60px;
+}
+
+.footer-content {
+    text-align: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin: 4px 0;
+}
+
+.footer-note {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+============================================ */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .reports-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 20px;
+    }
+
+    .page-title h2 {
+        font-size: 1.75rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .logo-section {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .logo-text h1 {
+        font-size: 1.25rem;
+    }
+
+    .date-time {
+        font-size: 0.8125rem;
+    }
+
+    .page-title {
+        margin: 24px 0;
+    }
+
+    .page-title h2 {
+        font-size: 1.5rem;
+    }
+
+    .reports-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .report-card {
+        padding: 20px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .report-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .main-header {
+        padding: 16px 0;
+    }
+
+    .logo-text h1 {
+        font-size: 1.125rem;
+    }
+
+    .logo-text .subtitle {
+        font-size: 0.8125rem;
+    }
+
+    .page-title h2 {
+        font-size: 1.375rem;
+    }
+
+    .report-title {
+        font-size: 1.125rem;
+    }
+
+    .report-description {
+        font-size: 0.875rem;
+        min-height: auto;
+    }
+}
+
+/* ============================================
+   ANIMACIONES
+============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.report-card {
+    animation: fadeIn 0.4s ease backwards;
+}
+
+.report-card:nth-child(1) { animation-delay: 0.05s; }
+.report-card:nth-child(2) { animation-delay: 0.1s; }
+.report-card:nth-child(3) { animation-delay: 0.15s; }
+.report-card:nth-child(4) { animation-delay: 0.2s; }
+.report-card:nth-child(5) { animation-delay: 0.25s; }
+
+/* ============================================
+   ESTADOS ADICIONALES
+============================================ */
+.btn:focus {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Print styles */
+@media print {
+    .main-header,
+    .breadcrumb,
+    .button-group,
+    .main-footer {
+        display: none;
+    }
+
+    .report-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    body {
+        background: white;
+    }
+}

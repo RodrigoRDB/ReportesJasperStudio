@@ -1,6 +1,6 @@
 package com.FinanGlobal.bancoemp;
 
-import com.FinanGlobal.bancoemp.repository.UsuarioRepository;
+import com.FinanGlobal.bancoemp.Repositorio.UsuarioRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

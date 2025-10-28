@@ -1,6 +1,6 @@
-package com.FinanGlobal.bancoemp.repository;
+package com.FinanGlobal.bancoemp.Repositorio;
 
-import com.FinanGlobal.bancoemp.entity.Usuario;
+import com.FinanGlobal.bancoemp.Entidad.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

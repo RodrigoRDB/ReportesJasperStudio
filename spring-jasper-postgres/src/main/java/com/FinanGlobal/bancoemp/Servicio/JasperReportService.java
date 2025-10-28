@@ -1,4 +1,4 @@
-package com.FinanGlobal.bancoemp.service;
+package com.FinanGlobal.bancoemp.Servicio;
 
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.export.HtmlExporter;

@@ -1,7 +1,7 @@
-package com.FinanGlobal.bancoemp.controller;
+package com.FinanGlobal.bancoemp.Controlador;
 
 
-import com.FinanGlobal.bancoemp.service.JasperReportService;
+import com.FinanGlobal.bancoemp.Servicio.JasperReportService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

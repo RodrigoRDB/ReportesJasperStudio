@@ -54,8 +54,6 @@ public class ReportController {
             @RequestParam String nombre) throws Exception {
 
         Map<String, Object> params = new HashMap<>();
-        // Si tu reporte tiene parámetros (como clienteId, fecha, etc.), los agregas aquí
-        // params.put("P_CLIENTE_ID", 1);
 
         String html = jasperService.generateHtml(nombre + ".jrxml", params);
         HttpHeaders headers = new HttpHeaders();
@@ -68,7 +66,6 @@ public class ReportController {
             @RequestParam String nombre) throws Exception {
 
         Map<String, Object> params = new HashMap<>();
-        // Igual que arriba, aquí podrías pasar parámetros dinámicos
 
         byte[] pdf = jasperService.generatePdf(nombre + ".jrxml", params);
 

@@ -1,4 +1,4 @@
-package com.tuempresa.bancoemp.entity;
+package com.FinanGlobal.bancoemp.entity;
 
 import jakarta.persistence.*;
 

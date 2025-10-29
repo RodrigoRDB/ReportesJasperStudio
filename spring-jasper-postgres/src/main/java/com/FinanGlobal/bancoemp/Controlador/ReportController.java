@@ -22,12 +22,11 @@ public class ReportController {
     }
 
     // Visualiza el reporte como HTML (inline)
-    // ejemplo: /reporte/view?clienteId=1
     @GetMapping("/reporte/view")
     public ResponseEntity<String> viewReport(@RequestParam(required = false) Integer clienteId) throws Exception {
         HashMap<String, Object> params = new HashMap<>();
         if (clienteId != null) params.put("P_CLIENTE_ID", clienteId);
-        // puedes añadir más params aquí
+
 
         String html = jasperService.generateHtml("Reporte1.jrxml", params);
         HttpHeaders headers = new HttpHeaders();
